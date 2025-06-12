@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>信号機</title>
+        <style>
+            .shingou {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 1000px;
+                height: 300px;
+            }
+            .color__red, .color__blue, .color__yellow {
+                background-color: gray;
+                color: white;
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 18px;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const btn = document.getElementById("btn");
+                const blue = document.querySelector(".color__blue");
+                const yellow = document.querySelector(".color__yellow");
+                const red = document.querySelector(".color__red");
+                let count = 0;
+
+                red.style.backgroundColor = "red"; 
+                btn.addEventListener("click", () => {
+                    count++;
+                    btn.textContent = count;
+
+                    blue.style.backgroundColor = "gray";
+                    yellow.style.backgroundColor = "gray";
+                    red.style.backgroundColor = "";
+
+                    if (count % 3 === 1) {
+                        blue.style.backgroundColor = "blue"; 
+                    } else if (count % 3 === 2) {
+                        yellow.style.backgroundColor = "yellow";
+                    } else if (count % 3 === 0) {
+                        red.style.backgroundColor = "red";
+                    }
+                });
+
+                btn.textContent = count;
+            });
+        </script>
+    </head>
+    <body>
+        <div class="shingou">
+            <div class="color__blue"></div>
+            <div class="color__yellow"></div>
+            <div class="color__red"></div>
+        </div>
+        <button id="btn">0</button>
+    </body>
+</html>

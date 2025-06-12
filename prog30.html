@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>横並びボックスと矢印キー</title>
+    <style>
+        body {
+            display: flex;
+            /* すべてのボックスを灰色にするため背景色をbodyで指定 */
+            background: #f5f5f5;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            gap: 16px;
+        }
+        .box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background 0.2s;
+            border: 2px solid #bbb;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .box:nth-child(1) {
+            background: #e57373;
+        }
+        .box:nth-child(2) {
+            background: #64b5f6;
+        }
+        .box:nth-child(3) {
+            background: #ffd54f;
+        }
+        .box:nth-child(4) {
+            background: #81c784;
+        }
+        .box:nth-child(5) {
+            background: #ba68c8;
+        }
+        .active {
+            background: black !important;
+            color: #fff;
+            border-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box active">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+    <script>
+        const boxes = document.querySelectorAll('.box');
+        let current = 0;
+
+        function updateActiveBox() {
+            boxes.forEach((box, idx) => {
+                box.classList.toggle('active', idx === current);
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight" && current < boxes.length - 1) {
+                current++;
+                updateActiveBox();
+            } else if (e.key === "ArrowLeft" && current > 0) {
+                current--;
+                updateActiveBox();
+            }
+        });
+    </script>
+</body>
+</html>

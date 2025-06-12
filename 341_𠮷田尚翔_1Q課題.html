@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>1Q課題</title>
+        <meta charset="UTF-8">
+        <style>
+            * {
+                font-family: "Noto Sans JP";
+                margin: 0;
+                padding: 0;
+            }
+
+            ul, ol {
+                list-style: none;
+            }
+
+            .header__announcement {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-color: #141414;
+                color: #FFF;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .header__icon {
+                display: flex;
+                padding: 4px;
+                justify-content: space-between;
+                align-items: center;
+                align-self: stretch;
+            }
+
+            .header__logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .header__hamburger {
+                display: none;
+            }
+
+            .header__logo img {
+                width: 65.51px;
+                height: 64px;
+            }
+
+            .header__logo h3 {
+                color: #141414;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            .header__chevron {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 20px;
+                height: 20px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+            }
+
+            .header__chevron img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .header__currency {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .header__actions {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .header__actions img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .header__action-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                transition: opacity 0.3s ease;
+            }
+
+            .header__action-button:hover {
+                opacity: 0.7;
+            }
+
+            .header__nav {
+                display: flex;
+                padding: 4px 15px;
+                justify-content: space-between;
+                align-items: center;
+                align-self: stretch;
+                border-top: #E5E5E5 1px solid;
+            }
+
+            .header__nav-item {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                list-style: none;
+            }
+
+            .header__nav-link {
+                color: #141414;
+                text-decoration: none;
+                font-family: Arial;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                transition: color 0.3s ease;
+            }
+
+            .header__nav-link:hover {
+                color: #858585;
+            }
+
+            .header__search {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .header__search-input {
+                border: 1px solid #E5E5E5;
+                background-color: #F5F5F5;
+                padding: 5px 10px;
+                font-size: 13px;
+                color: #141414;
+            }
+
+            .header__search-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                transition: opacity 0.3s ease;
+            }
+
+            .header__search-button:hover {
+                opacity: 0.7;
+            }
+
+            .header__search img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .builder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-self: stretch;
+                text-align: center;
+                justify-content: center;
+                width: 100%;
+                height: 550px;
+            }
+
+            .builder h3 {
+                color: #141414;
+                font-family: "Noto Sans";
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            .builder__headline {
+                color: #FFF !important;
+                font-family: "Noto Sans";
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            .builder h1 {
+                color: #141414;
+                font-family: "Noto Sans";
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 36px;
+            }
+
+            .builder__title {
+                color: #858585 !important;
+            }
+
+            .builder__category {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .builder--one-column {
+                width: 100%;
+                background-color: #f4f4f4;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/top.jpg?raw=true);
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .builder-category__item--womens, .builder-category__item--mens {
+                display: flex;
+                border: 1px solid #141414;
+                background-color: #FFF;
+                width: 220px;
+                height: 35px;
+                min-width: 160px;
+                align-items: center;
+                align-self: stretch;
+                text-align: center;
+                justify-content: center;
+                justify-items: center;
+                transition: background-color 0.3s ease;
+                cursor: pointer;
+            }
+
+            .builder-category__item--womens:hover, .builder-category__item--mens:hover {
+                background-color: rgba(20, 20, 20, 0.1);
+            }
+
+            .builder--three-columns {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .builder__three-columns h2 {
+                color: #141414;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            .builder__column--womens {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-self: center;
+                justify-content: flex-end;
+                padding: 14px;
+                width: 370px;
+                height: 342px;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/womens.jpg?raw=true);
+                background-size: auto;
+            }
+
+            .builder__column--mens {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-self: center;
+                justify-content: flex-end;
+                padding: 14px;
+                width: 370px;
+                height: 342px;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/mens.jpg?raw=true);
+                background-size: auto;
+            }
+
+            .builder__column--goods {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-self: center;
+                justify-content: flex-end;
+                padding: 14px;
+                width: 370px;
+                height: 342px;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/goods.jpg?raw=true);
+                background-size: auto;
+            }
+
+            .builder-category__title--womens,
+            .builder-category__title--mens,
+            .builder-category__title--goods {
+                color: #141414;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                background-color: #FFF;
+                width: 330px;
+                height: 21px;
+            }
+
+            .builder-category__title--womens.expanded,
+            .builder-category__title--mens.expanded,
+            .builder-category__title--goods.expanded {
+                width: 330px;
+                height: 336px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255);
+            }
+
+            .builder--two-columns {
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+                align-items: center;
+                align-self: stretch;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .builder__column--new {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-self: center;
+                justify-content: center;
+                width: 570px;
+                height: 415px;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/color.jpg?raw=true);
+                background-size: auto;
+                gap: 10px;
+            }
+
+            .builder__column--season {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-self: center;
+                justify-content: center;
+                width: 570px;
+                height: 415px;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/colaboration.jpg?raw=true);
+                background-size: auto;
+                gap: 10px;
+            }
+
+            .builder__column-title {
+                color: #141414;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            .builder__column-subtitle {
+                color: #858585;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+            }
+
+            .builder__column-link {
+                color: #FFF !important;
+                background-color: #141414;
+                width: 100px;
+                height: 35px;
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                text-decoration: none;
+            }
+
+            .builder__column-link:hover {
+                background-color: rgba(20, 20, 20, 0.8);
+            }
+
+            .collections {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-self: stretch;
+                text-align: center;
+                justify-content: center;
+                width: 100%;
+                height: 790px;
+            }
+
+            .collections__items {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .collections__reserve1 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/collections1.jpg?raw=true);
+                background-size: auto;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 10px;
+                margin: 10px;
+                width: 240px;
+                height: 326px;
+            }
+
+            .collections__reserve2 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/collections4.jpg?raw=true);
+                background-size: auto;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 10px;
+                margin: 10px;
+                width: 240px;
+                height: 326px;
+            }
+
+            .collections__ready1 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/collections2.jpg?raw=true);
+                background-size: auto;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 10px;
+                margin: 10px;
+                width: 240px;
+                height: 326px;
+            }
+
+            .collections__ready2 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                background-image: url(https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/collections3.jpg?raw=true);
+                background-size: auto;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 10px;
+                margin: 10px;
+                width: 240px;
+                height: 326px;
+            }
+
+            .reserve {
+                display: flex;
+                background-color: #FFDE2D;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 72px;
+                gap: 4px;
+                align-items: center;
+                align-self: stretch;
+            }
+
+            .collections__item {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                background-color: #FFF;
+                margin: 10px;
+            }
+
+            .collections__sizes {
+                display: flex;
+                flex-direction: row;
+                gap: 4px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                padding-bottom: 13px;
+            }
+
+            .collections__size {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 35px;
+                height: 35px;
+                border: 1px solid #E5E5E5;
+                background-color: #FFF;
+                color: #858585;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .collections__size--active {
+                color: #141414;
+                border: 1px solid #141414;
+            }
+
+            .collections__colors {
+                display: flex;
+                flex-direction: row;
+                gap: 4px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                padding-bottom: 13px;
+            }
+
+            .collections__color {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .collections__color:hover {
+                transform: scale(1.1);
+            }
+
+            .collections__color--navy {
+                background-color: #191970;
+            }
+
+            .collections__color--beige {
+                background-color: #FFDEAD;
+            }
+
+            .collections__color--pink {
+                background-color: #FFF0F5;
+            }
+
+            .collections__color--salmon {
+                background-color: #FFA07A;
+            }
+
+            .collections__color--brown {
+                background-color: #B8860D;
+            }
+
+            .collections__color--sage {
+                background-color: #8FBC8F;
+            }
+
+            .collections__color--red {
+                background-color: #FF0000;
+            }
+
+            .collections__color--yellow {
+                background-color: #FFD700;
+            }
+
+            .collections__color--green {
+                background-color: #008000;
+            }
+
+            .collections__title {
+                color: #141414;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                padding-bottom: 20px;
+                padding-top: 37px;
+            }
+
+            .collections__brand {
+                display: flex;
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .collections__product {
+                display: flex;
+                color: #141414;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .collections__price {
+                display: flex;
+                color: #141414;
+                font-size: 17px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .collections__counter {
+                display: flex;
+                flex-direction: row;
+                gap: 12px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                padding-bottom: 13px;
+            }
+
+            .collections__counter-button {
+                display: flex;
+                background-color: #FFF;
+                justify-content: center;
+                align-items: center;
+                color: #141414;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                width: 35px;
+                height: 35px;
+                border: 1px solid #E5E5E5;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .collections__counter-button:hover {
+                background-color: rgba(20, 20, 20, 0.1);
+            }
+
+            .collections__counter-display {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #F5F5F5;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                width: 66px;
+                height: 35px;
+                border: 1px solid #E5E5E5;
+            }
+
+            .collections__actions {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .collections__button {
+                display: flex;
+                border: 1px solid #141414;
+                background-color: #FFF;
+                color: #141414;
+                width: 167px;
+                height: 35px;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                transition: background-color 0.3s ease;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .collections__button:hover {
+                background-color: rgba(20, 20, 20, 0.1);
+            }
+
+            .collections__icons {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .collections__icon-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                transition: opacity 0.3s ease;
+            }
+
+            .collections__icon-button:hover {
+                opacity: 0.7;
+            }
+
+            .collections__icon-button img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .collections__eye-icon {
+                display: none;
+            }
+
+            .collections__rating {
+                display: flex;
+                flex-direction: row;
+                gap: 9px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                padding-bottom: 13px;
+            }
+
+            .collections__all {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 243px;
+                height: 56px;
+                color: #FFF;
+                background-color: #141414;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+                padding: 15px;
+                cursor: pointer;
+                transition: opacity 0.3s ease;
+                text-decoration: none;
+            }
+
+            .collections__all:hover {
+                opacity: 0.8;
+            }
+
+            .blog-list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 40px 0;
+                gap: 30px;
+            }
+
+            .blog-list__title {
+                color: #141414;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .blog-list__items {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 30px;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .blog-list__item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                max-width: 370px;
+                gap: 15px;
+            }
+
+            .blog-list__item-image {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                margin-bottom: 15px;
+            }
+
+            .blog-list__item-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .blog-list__item-title {
+                color: #141414;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                text-align: center;
+            }
+
+            .blog-list__item-description {
+                color: #858585;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+                text-align: center;
+            }
+
+            .blog-list__item-date {
+                display: flex;
+                flex-direction: row;
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+                text-align: right;
+                align-items: flex-end;
+                justify-content: flex-end;
+                width: 100%;
+            }
+
+            .blog-list__item-author {
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .article-carousel {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap: 30px;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .article-carousel__title {
+                color: #141414;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .article-carousel__items {
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+
+            .article-carousel__item {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+                padding: 30px;
+            }
+
+            .article-carousel__item-wrapper {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .article-carousel__item img {
+                width: 273px;
+                height: 200px;
+            }
+
+            .article-carousel__item-content {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .article-carousel__item-title {
+                color: #141414;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .article-carousel__item-text,
+            .article-carousel__item-meta,
+            .article-carousel__item-button {
+                display: none;
+            }
+
+            .article-carousel__slider {
+                display: none;
+            }
+
+            .footer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .footer__mail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                align-self: center;
+                justify-content: space-between;
+                margin: 15px;
+                width: 90%;
+                height: 58px;
+            }
+
+            .footer__mail-magazine {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 506px;
+                width: 506px;
+                height: 20px;
+            }
+
+            .footer__mail-magazine h2 {
+                color: #141414;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                justify-content: flex-start;
+            }
+
+            .footer__mail-magazine p {
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                color:#858585;
+            }
+
+            .footer__mail-input {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 470px;
+                height: 35px;
+                gap: 15px;
+            }
+
+            .footer__mail-email {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                border: 1px solid #E5E5E5;
+                background-color: #F5F5F5;
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+                padding-left: 10px;
+            }
+
+            .footer__mail-input-field {
+                width: 100%;
+                height: 100%;
+                border: 1px solid #E5E5E5;
+                background-color: #F5F5F5;
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+                padding-left: 10px;
+            }
+
+            .footer__mail-input-field::placeholder {
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .footer__mail-button {
+                display: flex;
+                border: 1px solid #E5E5E5;
+                width: 91px;
+                height: 35px;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                background-color: #FFFFFF;
+                color: #141414;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                flex-shrink: 0;
+            }
+
+            .footer__mail-button:hover {
+                background-color: #F5F5F5;
+            }
+
+            .footer__items {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-end;
+                width: 100%;
+                height: auto;
+                gap: 75px;
+            }
+
+            .footer__order, .footer__info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+                width: 50%;
+            }
+
+            .footer__info-details, .footer__info-customer, .footer__info-sns {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-end;
+            }
+
+            .footer__order-title, .footer__info-title {
+                color: #141414;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .footer__info-contacts, .footer__info-hours, .footer__info-emails {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .footer__order-item, .footer__info-contact, .footer__info-hour, .footer__info-email, .footer__info-sns-item , .footer__info-description {
+                color: #858585;
+                font-size: 13px !important;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 13px;
+            }
+
+            .footer__info-contacts {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .footer__info-contacts img {
+                width: 20px;
+                height: 20px;
+                gap: 10px;
+            }
+
+            .footer__info-hours {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            .footer__info-hours img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .footer__info-emails {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .footer__info-emails img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .footer__info-customer {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+
+            .footer__info{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 338px;
+                height: 203px;
+                gap:20px;
+                padding: 0px 25px;
+                margin-bottom: 20px;
+            }
+
+            .footer__info-sns {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 205px;
+                height: 150px;
+                gap: 10px;
+            }
+
+            .footer__info-sns-title {
+                color: #141414;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .footer__info-sns-item {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100px;
+                height: 20px;
+                gap: 10px;
+                text-decoration: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .footer__info-sns-item:hover {
+                opacity: 0.7;
+            }
+
+            .footer__info-sns-item img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .footer__order{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 220px;
+                height: 150px;
+            }
+
+            .footer__copyright {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-self: center;
+                justify-content: space-between;
+                width: 95%;
+                border-top: #E5E5E5 1px solid;
+                padding-top: 10px;
+            }
+
+            .footer__copyright h2 {
+                color: #858585;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 26px;
+            }
+
+            .footer__copyright-logo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                width: 50%;
+                padding-left: 20px;
+                gap: 10px;
+            }
+
+            .footer__copyright-payment {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+                width: 50%;
+                gap: 10px;
+            }
+
+            .footer__copyright-logo img {
+                width: 65.51px;
+                height: 64px;
+            }
+
+            .footer__copyright-payment img{
+                width: 29px;
+                height: 19px;
+            }
+            .footer__toggle-button{
+                display: none;
+            }
+
+            .arrow{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                align-self: flex-end;
+                width: 20px;
+                height: 20px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                transition: opacity 0.3s ease;
+            }
+
+            .arrow:hover {
+                opacity: 0.7;
+            }
+
+            .arrow img {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 5px;
+            }
+
+            @media (max-width: 600px) {
+                .main {
+                    padding: 0 10px;
+                }
+
+                .main > section {
+                    margin-bottom: 10px;
+                }
+
+                .header__nav {
+                    display: none;
+                }
+
+                .header__icon {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    padding: 10px 20px;
+                }
+
+                .header__hamburger {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 24px;
+                    height: 24px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 0;
+                }
+
+                .header__hamburger img {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .header__logo {
+                    margin: 0;
+                }
+
+                .header__actions {
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                }
+
+                .header__currency {
+                    display: none;
+                }
+
+                .header__action-button {
+                    padding: 5px;
+                }
+
+                .header__action-button img {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .builder--one-column {
+                    width: calc(100% - 20px);
+                    height: 400px;
+                    padding: 10px;
+                    background-size: cover;
+                    background-position: center;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: center;
+                    margin-bottom: 10px;
+                }
+
+                .builder__category {
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 15px;
+                    padding: 0 10px;
+                    align-items: center;
+                }
+
+                .builder-category__item--womens,
+                .builder-category__item--mens {
+                    width: 100%;
+                    max-width: 300px;
+                    align-self: center;
+                }
+
+                .collections {
+                    width: calc(100% - 20px);
+                    height: auto;
+                    margin-bottom: 10px;
+                }
+
+                .collections__items {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    padding: 10px 0;
+                    justify-content: center;
+                }
+
+                .collections__sale {
+                    width: calc(50% - 5px);
+                    margin-bottom: 10px;
+                }
+
+                .collections__reserve1,
+                .collections__reserve2,
+                .collections__ready1,
+                .collections__ready2 {
+                    width: 100%;
+                    background-size: cover;
+                    background-position: center;
+                    margin-bottom: 10px;
+                }
+
+                .collections__reserve1 img,
+                .collections__reserve2 img,
+                .collections__ready1 img,
+                .collections__ready2 img {
+                    width: 163px;
+                    height: 214px;
+                    background-size: cover;
+                    background-position: center;
+                    margin-bottom: 10px;
+                }
+
+                .collections__item {
+                    width: 100%;
+                    height: 514px;
+                }
+
+                .collections__icons {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                    width: 100%;
+                }
+
+                .collections__icons img {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .collections__actions {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    gap: 10px;
+                }
+
+                .collections__button {
+                    width: 100%;
+                }
+
+                .collections__eye-icon {
+                    display: block;
+                }
+
+                .collections__all {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 241px;
+                    height: 56px;
+                    padding: 0px;
+                }
+
+                .blog-list {
+                    padding: 40px 10px;
+                    margin-bottom: 10px;
+                }
+
+                .blog-list__items {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .blog-list__item {
+                    max-width: 100%;
+                    margin-bottom: 10px;
+                }
+
+                .blog-list__item-image {
+                    height: 200px;
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                .builder--three-columns {
+                    flex-direction: column;
+                    height: 1085px;
+                    margin-top: 100px;
+                }
+
+                .builder__column--womens,
+                .builder__column--mens,
+                .builder__column--goods {
+                    width: 355px;
+                    height: 355px;
+                    aspect-ratio: 1 / 1;
+                    background-size: cover;
+                    background-position: center;
+                    margin-bottom: 10px;
+                }
+
+                .builder--two-columns {
+                    margin-top: 120px;
+                    flex-direction: column;
+                    gap: 10px;
+                    height: 720px;
+                    margin-bottom: 10px;
+                }
+
+                .builder__column--new,
+                .builder__column--season {
+                    width: 380px;
+                    height: 380px;
+                    background-size: cover;
+                    background-position: center;
+                    margin-bottom: 10px;
+                    aspect-ratio: 1 / 1;
+                }
+
+                .article-carousel {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 20px 10px;
+                    margin-bottom: 10px;
+                    width: 100%;
+                }
+
+                .article-carousel__items {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    width: 100%;
+                }
+
+                .article-carousel__item {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    height: auto;
+                    min-width: unset;
+                    padding: 0;
+                }
+
+                .article-carousel__item-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 15px;
+                }
+
+                .article-carousel__item img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                }
+
+                .article-carousel__item-content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding: 0 10px;
+                }
+
+                .article-carousel__item-title {
+                    color: #141414;
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: 26px;
+                    margin: 0;
+                }
+
+                .article-carousel__item-text {
+                    display: block;
+                    color: #858585;
+                    font-size: 15px;
+                    line-height: 26px;
+                    margin: 0;
+                }
+
+                .article-carousel__item-meta {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    margin-top: 10px;
+                }
+
+                .article-carousel__item-date {
+                    color: #858585;
+                    font-size: 13px;
+                }
+
+                .article-carousel__item-author {
+                    color: #858585;
+                    font-size: 13px;
+                }
+
+                .article-carousel__item-button {
+                    display: inline-block;
+                    background-color: #141414;
+                    color: #FFF;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                    font-size: 14px;
+                    margin-top: 15px;
+                    text-align: center;
+                    transition: background-color 0.3s ease;
+                }
+
+                .article-carousel__item-button:hover {
+                    background-color: rgba(20, 20, 20, 0.8);
+                }
+
+                .article-carousel__slider {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                    margin-top: 20px;
+                }
+
+                .article-carousel__slider-dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background-color: #E5E5E5;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                .article-carousel__slider-dot--active {
+                    background-color: #141414;
+                }
+
+                .footer {
+                    padding: 20px 10px;
+                    text-align: center;
+                }
+
+                .footer__mail {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 90%;
+                    height: 300px;
+                    margin: 15px;
+                    gap: 20px;
+                    padding: 20px 0;
+                }
+
+                .footer__mail-magazine {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    width: 100%;
+                    height: 200px;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #E5E5E5;
+                }
+
+                .footer__mail-magazine h2 {
+                    color: #141414;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 26px;
+                    margin-bottom: 10px;
+                }
+
+                .footer__mail-magazine p {
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 20px;
+                    color: #858585;
+                }
+
+                .footer__mail-input {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    gap: 15px;
+                    padding-top: 20px;
+                }
+
+                .footer__mail-email {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 100%;
+                    height: 35px;
+                    border: 1px solid #E5E5E5;
+                    background-color: #F5F5F5;
+                    color: #858585;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 26px;
+                    padding-left: 10px;
+                }
+
+                .footer__mail-input-field {
+                    width: 100%;
+                    height: 35px;
+                    border: 1px solid #E5E5E5;
+                    background-color: #F5F5F5;
+                    color: #858585;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 26px;
+                    padding-left: 10px;
+                }
+
+                .footer__mail-input-field::placeholder {
+                    color: #858585;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 26px;
+                }
+
+                .footer__mail-button {
+                    display: flex;
+                    border: 1px solid #E5E5E5;
+                    width: 100%;
+                    height: 35px;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    flex-shrink: 0;
+                }
+
+                .footer__mail-button:hover {
+                    background-color: rgba(20, 20, 20, 0.1);
+                }
+
+                .footer__items {
+                    flex-direction: column;
+                    gap: 30px;
+                    align-items: center;
+                    padding: 20px 10px;
+                }
+
+                .footer__order,
+                .footer__info {
+                    width: 100%;
+                    padding: 0;
+                    margin-bottom: 20px;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .footer__order-header,
+                .footer__info-header {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #E5E5E5;
+                    cursor: pointer;
+                    position: relative;
+                }
+
+                .footer__order-title,
+                .footer__info-title {
+                    text-align: center;
+                }
+
+                .footer__toggle-button {
+                    position: absolute;
+                    right: 20px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 5px;
+                    transition: transform 0.3s ease;
+                }
+
+                .footer__toggle-button.active {
+                    transform: rotate(45deg);
+                }
+
+                .footer__toggle-button img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .footer__order-content,
+                .footer__info-content {
+                    display: none;
+                    width: 100%;
+                    padding: 15px 0;
+                }
+
+                .footer__order-content.active,
+                .footer__info-content.active {
+                    display: block;
+                }
+
+                .footer__info-details,
+                .footer__info-customer {
+                    align-items: center;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .footer__info-sns {
+                    width: 100%;
+                    align-items: center;
+                }
+
+                .footer__info-sns-items {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 20px;
+                    width: 100%;
+                }
+
+                .footer__info-sns-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                }
+
+                .footer__info-sns-item span {
+                    display: none;
+                }
+
+                .footer__info-sns-item img {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .footer__copyright {
+                    flex-direction: column;
+                    gap: 20px;
+                    align-items: center;
+                    padding: 20px 10px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .footer__copyright-logo,
+                .footer__copyright-payment {
+                    width: 100%;
+                    justify-content: center;
+                    padding: 0;
+                    margin-bottom: 10px;
+                }
+
+                .arrow {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    background-color: #141414;
+                    padding: 15px 0;
+                    margin-top: 20px;
+                }
+
+                .arrow img {
+                    width: 24px;
+                    height: 24px;
+                    margin-bottom: 5px;
+                }
+
+                .arrow::after {
+                    content: "↑トップ";
+                    color: #FFF;
+                    font-size: 13px;
+                }
+                .header__currency {
+                    display: none;
+                }
+                
+                .footer__order-content,
+                .footer__info-content {
+                    display: none;
+                    width: 100%;
+                    padding: 15px 0;
+                }
+
+                .footer__order-content.active,
+                .footer__info-content.active {
+                    display: block;
+                }
+
+                .footer__toggle-button {
+                    display: block;
+                    position: absolute;
+                    right: 20px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 5px;
+                    transition: transform 0.3s ease;
+                }
+
+                .footer__toggle-button.active {
+                    transform: rotate(45deg);
+                }
+
+                .footer__toggle-button img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            
+                
+
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.collections__size').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const parent = this.parentElement;
+                        parent.querySelector('.collections__size--active')?.classList.remove('collections__size--active');
+                        this.classList.add('collections__size--active');
+                    });
+                });
+
+                document.querySelectorAll('.collections__counter').forEach(counter => {
+                    const decreaseBtn = counter.querySelector('.collections__counter-button:first-child');
+                    const increaseBtn = counter.querySelector('.collections__counter-button:last-child');
+                    const display = counter.querySelector('.collections__counter-display');
+
+                    decreaseBtn.addEventListener('click', function() {
+                        let value = parseInt(display.textContent);
+                        if (value > 1) {
+                            display.textContent = value - 1;
+                        }
+                    });
+
+                    increaseBtn.addEventListener('click', function() {
+                        let value = parseInt(display.textContent);
+                        display.textContent = value + 1;
+                    });
+                });
+
+                const titles = document.querySelectorAll('.builder-category__title--womens, .builder-category__title--mens, .builder-category__title--goods');
+                titles.forEach(title => {
+                    title.parentElement.addEventListener('mouseenter', function() {
+                        title.classList.add('expanded');
+                    });
+
+                    title.parentElement.addEventListener('mouseleave', function() {
+                        title.classList.remove('expanded');
+                    });
+                });
+
+                const carouselItems = document.querySelectorAll('.article-carousel__item');
+                const sliderDots    = document.querySelectorAll('.article-carousel__slider-dot');
+                const sliderBar     = document.querySelector('.article-carousel__slider');
+                let   currentSlide  = 0;
+
+                const mq = window.matchMedia('(max-width: 600px)');
+
+                function initCarousel() {
+                    if (mq.matches) {
+                        sliderBar.style.display = 'flex';
+                        carouselItems.forEach((item, i) => {
+                            item.style.display = i === currentSlide ? 'flex' : 'none';
+                        });
+                        sliderDots.forEach((dot, idx) => {
+                            dot.classList.toggle('article-carousel__slider-dot--active', idx === currentSlide);
+                            dot.replaceWith(dot.cloneNode(true));
+                        });
+                        document.querySelectorAll('.article-carousel__slider-dot').forEach((dot, idx) => {
+                            dot.addEventListener('click', () => {
+                                currentSlide = idx;
+                                initCarousel();
+                            });
+                        });
+                    } else {
+                        carouselItems.forEach(item => item.style.display = 'flex');
+                        sliderBar.style.display = 'none';
+                    }
+                }
+
+                mq.addEventListener('change', initCarousel);
+
+                initCarousel();
+
+                const orderToggle = document.querySelector('.footer__order .footer__toggle-button');
+                const orderContent = document.querySelector('.footer__order-content');
+                const infoToggle = document.querySelector('.footer__info .footer__toggle-button');
+                const infoContent = document.querySelector('.footer__info-content');
+
+                function toggleAccordion(button, content) {
+                    button.addEventListener('click', function() {
+                        const isActive = button.classList.contains('active');
+                        
+                        button.classList.toggle('active');
+                        content.classList.toggle('active');
+                        
+                        const img = button.querySelector('img');
+                        if (isActive) {
+                            img.src = "https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-plus-icon-png-image_4231908.jpg";
+                            button.setAttribute('aria-label', 'メニューを開く');
+                        } else {
+                            img.src = "https://i2.wp.com/ai-catcher.com/wp-content/uploads/icon_140-1.png?fit=567%2C567&ssl=1";
+                            button.setAttribute('aria-label', 'メニューを閉じる');
+                        }
+                    });
+                }
+
+                function initAccordion() {
+                    if (window.innerWidth <= 600) {
+                        toggleAccordion(orderToggle, orderContent);
+                        toggleAccordion(infoToggle, infoContent);
+                    }
+                }
+
+                initAccordion();
+                window.addEventListener('resize', initAccordion);
+            });
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__announcement" role="alert">最終クリアランス:20%オフ</div>
+            <div class="header__icon">
+                <button class="header__hamburger" aria-label="メニュー">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/d72c522480320dde15543e2e624df7a4cf36c842/src/icon/icon-hamburger.svg" alt="メニュー">
+                </button>
+                <div class="header__logo">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/MisellDesktop.svg" alt="MISEル ロゴ">
+                </div>
+                <nav class="header__actions" aria-label="ユーザーアクション">
+                    <button class="header__action-button" aria-label="ヘルプ">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-help.svg" alt="ヘルプ">
+                    </button>
+                    <button class="header__action-button" aria-label="アカウント">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-account.svg" alt="アカウント">
+                    </button>
+                    <button class="header__action-button" aria-label="お気に入り">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-favorite.svg" alt="お気に入り">
+                    </button>
+                    <button class="header__action-button" aria-label="カート">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-cart.svg" alt="カート">
+                        <span class="header__cart">(0)</span>
+                    </button>
+                    <div class="header__currency">
+                        <span>日本 JPY(¥)</span>
+                        <button class="header__chevron" aria-label="通貨選択">
+                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-chevron-down.svg" alt="通貨選択">
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <nav class="header__nav" aria-label="メインナビゲーション">
+                <ul class="header__nav-item">
+                    <li><a href="#" class="header__nav-link">ショップ</a></li>
+                    <li><a href="#" class="header__nav-link">ブログ</a></li>
+                    <li><a href="#" class="header__nav-link">コレクションリスト</a></li>
+                    <li><a href="#" class="header__nav-link">おすすめ</a></li>
+                </ul>
+                <form class="header__search" role="search">
+                    <label for="search-input" class="header__search-title">検索</label>
+                    <input type="search" id="search-input" class="header__search-input" aria-label="商品を検索">
+                    <button type="submit" class="header__search-button" aria-label="検索実行">
+                        <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-serch.svg" alt="検索">
+                    </button>
+                </form>
+            </nav>
+        </header>
+        <main>
+            <section class="builder builder--one-column">
+                <h1 class="builder__headline">ラストクリアランス</h1>
+                <p class="builder__title">オンラインショップ限定</p>
+                <p class="builder__description">30-80%オフ</p>
+                <nav class="builder__category" aria-label="カテゴリー選択">
+                    <button class="builder-category__item--womens">ウィメンズ</button>
+                    <button class="builder-category__item--mens">メンズ</button>
+                </nav>
+            </section>
+            <section class="blog-list">
+                <h2 class="blog-list__title">ブログ</h2>
+                <div class="blog-list__items">
+                    <article class="blog-list__item">
+                        <img class="blog-list__item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLQQ1BQi4YYsfNjy-6BYZpOEKGZks_Q8h7yA&s" alt="季節の新着商品の画像">
+                        <div class="blog-list__item-content">
+                            <h3 class="blog-list__item-title">季節の新着</h3>
+                            <p class="blog-list__item-description">季節に合わせた新商品を紹介します</p>
+                            <time class="blog-list__item-date" datetime="2025-05-28">2025/05/28</time>
+                            <span class="blog-list__item-author">佐々木</span>
+                        </div>
+                    </article>
+                    <article class="blog-list__item">
+                        <img class="blog-list__item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2oCFB6ceBcAjRyLUvbRJ4rgG_YmLLBuaJg&s" alt="春の新着商品の画像">
+                        <div class="blog-list__item-content">
+                            <h3 class="blog-list__item-title">春の新着</h3>
+                            <p class="blog-list__item-description">春のために作られた商品を紹介します</p>
+                            <time class="blog-list__item-date" datetime="2025-05-28">2025/05/28</time>
+                            <span class="blog-list__item-author">沼田</span>
+                        </div>
+                    </article>
+                    <article class="blog-list__item">
+                        <img class="blog-list__item-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8qu94tac9S54GV24aQsptS5Vw4O_wNoxkVw&s" alt="夏の新着商品の画像">
+                        <div class="blog-list__item-content">
+                            <h3 class="blog-list__item-title">夏の新着</h3>
+                            <p class="blog-list__item-description">夏にぴったりの商品を紹介します</p>
+                            <time class="blog-list__item-date" datetime="2025-05-28">2025/05/28</time>
+                            <span class="blog-list__item-author">森山</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="collections">
+                <h2 class="collections__title">コレクションズ</h2>
+                <div class="collections__items">
+                    <article class="collections__sale">
+                        <div class="collections__reserve1">
+                            <span class="reserve" role="status">予約注文</span>
+                        </div>
+                        <div class="collections__item">
+                            <h3 class="collections__brand">MISEル</h3>
+                            <h4 class="collections__product">サングラス</h4>
+                            <p class="collections__price">¥ 10,000</p>
+                            <div class="collections__colors" role="radiogroup" aria-label="カラー選択">
+                                <button class="collections__color collections__color--navy" aria-label="ネイビー"></button>
+                                <button class="collections__color collections__color--beige" aria-label="ベージュ"></button>
+                                <button class="collections__color collections__color--pink" aria-label="ピンク"></button>
+                                <button class="collections__color collections__color--salmon" aria-label="サーモン"></button>
+                                <button class="collections__color collections__color--brown" aria-label="ブラウン"></button>
+                                <button class="collections__color collections__color--sage" aria-label="セージ"></button>
+                            </div>
+                            <div class="collections__sizes" role="radiogroup" aria-label="サイズ選択">
+                                <button class="collections__size collections__size--active" aria-label="サイズS" aria-pressed="true">S</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズM" aria-pressed="false">M</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズXL" aria-pressed="false">XL</button>
+                            </div>
+                            <div class="collections__counter">
+                                <button class="collections__counter-button" aria-label="数量を減らす">-</button>
+                                <div class="collections__counter-display" role="spinbutton" aria-label="商品数量">1</div>
+                                <button class="collections__counter-button" aria-label="数量を増やす">+</button>
+                            </div>
+                            <div class="collections__buy">
+                                <div class="collections__actions">
+                                    <button class="collections__button">カートにいれる</button>
+                                    <div class="collections__icons">
+                                        <button class="collections__icon-button" aria-label="お気に入りに追加">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-favorite.svg" alt="お気に入り">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品を比較">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-compare.svg" alt="比較">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品詳細を見る">
+                                            <img class="collections__eye-icon" src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/d72c522480320dde15543e2e624df7a4cf36c842/src/icon/icon-eye.svg" alt="詳細">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collections__rating" role="img" aria-label="5つ星評価">
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <div class="collections__sale">
+                        <div class="collections__ready1">
+                            
+                        </div>
+                        <div class="collections__item">
+                            <h3 class="collections__brand">MISEル</h3>
+                            <h4 class="collections__product">ルーズフィットジーンズ</h4>
+                            <p class="collections__price">¥ 40,000</p>
+                            <div class="collections__colors" role="radiogroup" aria-label="カラー選択">
+                                <button class="collections__color collections__color--navy" aria-label="ネイビー"></button>
+                                <button class="collections__color collections__color--beige" aria-label="ベージュ"></button>
+                                <button class="collections__color collections__color--pink" aria-label="ピンク"></button>
+                                <button class="collections__color collections__color--salmon" aria-label="サーモン"></button>
+                                <button class="collections__color collections__color--brown" aria-label="ブラウン"></button>
+                                <button class="collections__color collections__color--sage" aria-label="セージ"></button>
+                            </div>
+                            <div class="collections__sizes" role="radiogroup" aria-label="サイズ選択">
+                                <button class="collections__size collections__size--active" aria-label="サイズS" aria-pressed="true">S</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズM" aria-pressed="false">M</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズXL" aria-pressed="false">XL</button>
+                            </div>
+                            <div class="collections__counter">
+                                <button class="collections__counter-button" aria-label="数量を減らす">-</button>
+                                <div class="collections__counter-display" role="spinbutton" aria-label="商品数量">1</div>
+                                <button class="collections__counter-button" aria-label="数量を増やす">+</button>
+                            </div>
+                            <div class="collections__buy">
+                                <div class="collections__actions">
+                                    <button class="collections__button">カートにいれる</button>
+                                    <div class="collections__icons">
+                                        <button class="collections__icon-button" aria-label="お気に入りに追加">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-favorite.svg" alt="お気に入り">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品を比較">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-compare.svg" alt="比較">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品詳細を見る">
+                                            <img class="collections__eye-icon" src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/d72c522480320dde15543e2e624df7a4cf36c842/src/icon/icon-eye.svg" alt="詳細">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collections__rating" role="img" aria-label="5つ星評価">
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="collections__sale">
+                        <div class="collections__ready2">
+                            
+                        </div>
+                        <div class="collections__item">
+                            <h3 class="collections__brand">MISEル</h3>
+                            <h4 class="collections__product">ニットウェア</h4>
+                            <p class="collections__price">¥ 30,000</p>
+                            <div class="collections__colors" role="radiogroup" aria-label="カラー選択">
+                                <button class="collections__color collections__color--navy" aria-label="ネイビー"></button>
+                                <button class="collections__color collections__color--beige" aria-label="ベージュ"></button>
+                                <button class="collections__color collections__color--pink" aria-label="ピンク"></button>
+                                <button class="collections__color collections__color--salmon" aria-label="サーモン"></button>
+                                <button class="collections__color collections__color--brown" aria-label="ブラウン"></button>
+                                <button class="collections__color collections__color--sage" aria-label="セージ"></button>
+                            </div>
+                            <div class="collections__sizes" role="radiogroup" aria-label="サイズ選択">
+                                <button class="collections__size collections__size--active" aria-label="サイズS" aria-pressed="true">S</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズM" aria-pressed="false">M</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズXL" aria-pressed="false">XL</button>
+                            </div>
+                            <div class="collections__counter">
+                                <button class="collections__counter-button" aria-label="数量を減らす">-</button>
+                                <div class="collections__counter-display" role="spinbutton" aria-label="商品数量">1</div>
+                                <button class="collections__counter-button" aria-label="数量を増やす">+</button>
+                            </div>
+                            <div class="collections__buy">
+                                <div class="collections__actions">
+                                    <button class="collections__button">カートにいれる</button>
+                                    <div class="collections__icons">
+                                        <button class="collections__icon-button" aria-label="お気に入りに追加">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-favorite.svg" alt="お気に入り">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品を比較">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-compare.svg" alt="比較">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品詳細を見る">
+                                            <img class="collections__eye-icon" src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/d72c522480320dde15543e2e624df7a4cf36c842/src/icon/icon-eye.svg" alt="詳細">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collections__rating" role="img" aria-label="5つ星評価">
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="collections__sale">
+                        <div class="collections__reserve2">
+                            <span class="reserve" role="status">予約注文</span>
+                        </div>
+                        <div class="collections__item">
+                            <h3 class="collections__brand">MISEル</h3>
+                            <h4 class="collections__product">ダウンベスト</h4>
+                            <p class="collections__price">¥ 50,000</p>
+                            <div class="collections__colors" role="radiogroup" aria-label="カラー選択">
+                                <button class="collections__color collections__color--navy" aria-label="ネイビー"></button>
+                                <button class="collections__color collections__color--beige" aria-label="ベージュ"></button>
+                                <button class="collections__color collections__color--pink" aria-label="ピンク"></button>
+                                <button class="collections__color collections__color--salmon" aria-label="サーモン"></button>
+                                <button class="collections__color collections__color--brown" aria-label="ブラウン"></button>
+                                <button class="collections__color collections__color--sage" aria-label="セージ"></button>
+                            </div>
+                            <div class="collections__sizes" role="radiogroup" aria-label="サイズ選択">
+                                <button class="collections__size collections__size--active" aria-label="サイズS" aria-pressed="true">S</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズM" aria-pressed="false">M</button>
+                                <button class="collections__size collections__size--inactive" aria-label="サイズXL" aria-pressed="false">XL</button>
+                            </div>
+                            <div class="collections__counter">
+                                <button class="collections__counter-button" aria-label="数量を減らす">-</button>
+                                <div class="collections__counter-display" role="spinbutton" aria-label="商品数量">1</div>
+                                <button class="collections__counter-button" aria-label="数量を増やす">+</button>
+                            </div>
+                            <div class="collections__buy">
+                                <div class="collections__actions">
+                                    <button class="collections__button">カートにいれる</button>
+                                    <div class="collections__icons">
+                                        <button class="collections__icon-button" aria-label="お気に入りに追加">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-favorite.svg" alt="お気に入り">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品を比較">
+                                            <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-compare.svg" alt="比較">
+                                        </button>
+                                        <button class="collections__icon-button" aria-label="商品詳細を見る">
+                                            <img class="collections__eye-icon" src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/d72c522480320dde15543e2e624df7a4cf36c842/src/icon/icon-eye.svg" alt="詳細">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collections__rating" role="img" aria-label="5つ星評価">
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                                <span class="collections__star-text">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <a href="#" class="collections__all">すべての コレクションを見る</a>
+            </section>
+            <section class="builder builder--three-columns">
+                <div class="builder__column builder__column--womens">
+                    <div class="builder-category__title--womens">
+                        <h2 class="builder__column-title">ウィメンズ</h2>
+                    </div>
+                </div>
+                <div class="builder__column builder__column--mens">
+                    <div class="builder-category__title--mens">
+                        <h2 class="builder__column-title">メンズ</h2>
+                    </div>
+                </div>
+                <div class="builder__column builder__column--goods">
+                    <div class="builder-category__title--goods">
+                        <h2 class="builder__column-title">グッズ</h2>
+                    </div>
+                </div>
+            </section>
+            <section class="builder builder--two-columns">
+                <article class="builder__column builder__column--new">
+                    <h3 class="builder__column-subtitle">新着</h3>
+                    <h2 class="builder__column-title">選べるカラー</h2>
+                    <p class="builder__column-description">色鮮やかなエッセンシャルスタイル</p>
+                    <a href="#" class="builder__column-link">詳細を見る</a>
+                </article>
+                <article class="builder__column builder__column--season">
+                    <h3 class="builder__column-subtitle">それら全てを発見</h3>
+                    <h2 class="builder__column-title">コラボレーション</h2>
+                    <a href="#" class="builder__column-link">詳細を見る</a>
+                </article>
+            </section>
+            <section class="article-carousel">
+                <h2 class="article-carousel__title">記事カルーセル</h2>
+                <div class="article-carousel__items">
+                    <article class="article-carousel__item">
+                        <div class="article-carousel__item-wrapper">
+                            <img src="https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/2025SpringSummer.jpg?raw=true" alt="2025春夏コレクションの画像">
+                            <div class="article-carousel__item-content">
+                                <h3 class="article-carousel__item-title">2025春夏コレクション</h3>
+                                <p class="article-carousel__item-text">そしてジョバンニはすぐうしろの天気輪の柱がいつかぼんやりした三角標の形になって、しばらく蛍ほたるのように、ぺかぺか消えたりともったりしているのを見ました。それはだんだんはっきりして、とうとうりんとうごかないようになり、濃こい鋼青こうせいのそらの野原に</p>
+                                <div class="article-carousel__item-meta">
+                                    <time class="article-carousel__item-date" datetime="2025-02-21">2025年 2月 21日</time>
+                                    <span class="article-carousel__item-author">MISEル太郎が投稿</span>
+                                </div>
+                                <a href="#" class="article-carousel__item-button">記事を読む</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-carousel__item">
+                        <div class="article-carousel__item-wrapper">
+                            <img src="https://github.com/kzmSuzuki/webPropramming1_1Q/blob/main/src/img/LifeWearMagazine.jpg?raw=true" alt="Life Wear Magazines春夏号の画像">
+                            <div class="article-carousel__item-content">
+                                <h3 class="article-carousel__item-title">Life Wear Magazines<br>春夏号</h3>
+                                <p class="article-carousel__item-text">そしてジョバンニはすぐうしろの天気輪の柱がいつかぼんやりした三角標の形になって、しばらく蛍ほたるのように、ぺかぺか消えたりともったりしているのを見ました。それはだんだんはっきりして、とうとうりんとうごかないようになり、濃こい鋼青こうせいのそらの野原に</p>
+                                <div class="article-carousel__item-meta">
+                                    <time class="article-carousel__item-date" datetime="2025-02-21">2025年 2月 21日</time>
+                                    <span class="article-carousel__item-author">MISEル太郎が投稿</span>
+                                </div>
+                                <a href="#" class="article-carousel__item-button">記事を読む</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="article-carousel__slider" role="tablist">
+                    <button class="article-carousel__slider-dot article-carousel__slider-dot--active" role="tab" aria-selected="true" aria-label="スライド1"></button>
+                    <button class="article-carousel__slider-dot" role="tab" aria-selected="false" aria-label="スライド2"></button>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <section class="footer__mail">
+                <div class="footer__mail-magazine">
+                    <h2 class="footer__mail-title">メルマガの購読</h2>
+                    <p class="footer__mail-description">『MISEル』のメルマガを登録してオトクな情報・最新の情報を受け取ろう!</p>
+                </div>
+                <form class="footer__mail-input">
+                    <input type="email" id="email-input" class="footer__mail-input-field" placeholder="メールアドレスを入力" aria-label="メールアドレス">
+                    <button type="submit" class="footer__mail-button">購読!</button>
+                </form>
+            </section>
+            <section class="footer__items">
+                <nav class="footer__order" aria-label="注文関連">
+                    <div class="footer__order-header">
+                        <h2 class="footer__order-title">ご注文</h2>
+                        <button class="footer__toggle-button" aria-label="メニューを開く">
+                            <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-plus-icon-png-image_4231908.jpg" alt="開く">
+                        </button>
+                    </div>
+                    <div class="footer__order-content">
+                        <ul>
+                            <li><a href="#" class="footer__order-item">個人アカウント</a></li>
+                            <li><a href="#" class="footer__order-item">カートを見る</a></li>
+                            <li><a href="#" class="footer__order-item">プライバシーポリシー</a></li>
+                            <li><a href="#" class="footer__order-item">クッキーの使用</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <section class="footer__info">
+                    <div class="footer__info-header">
+                        <h2 class="footer__info-title">フッター情報</h2>
+                        <button class="footer__toggle-button" aria-label="メニューを開く">
+                            <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-plus-icon-png-image_4231908.jpg" alt="開く">
+                        </button>
+                    </div>
+                    <div class="footer__info-content">
+                        <div class="footer__info-details">
+                            <p class="footer__info-description">ご不明な点ございましたらよくある質問をご覧ください。<br>またはカスタマーサービスまでお問い合わせください。</p>
+                        </div>
+                        <div class="footer__info-customer">
+                            <h2 class="footer__info-title">カスタマーサービス</h2>
+                            <div class="footer__info-contacts">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-tel.svg" alt="電話アイコン">
+                                <p class="footer__info-contact">電話番号:00-0000-0000</p>
+                            </div>
+                            <div class="footer__info-hours">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-clock.svg" alt="時計アイコン">
+                                <p class="footer__info-hour">月曜 - 金曜: 9:00 am - 6:00 pm<br>土曜: 9:00 am - 4:00 pm<br>日曜: 9:00 am - 2:00 pm</p>
+                            </div>
+                            <div class="footer__info-emails">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-mail.svg" alt="メールアイコン">
+                                <a href="mailto:info@example.com" class="footer__info-email">E-mailでのお問い合わせ</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <nav class="footer__info-sns" aria-label="ソーシャルメディア">
+                    <h2 class="footer__info-title">SNSをフォロー</h2>
+                    <ul class="footer__info-sns-items">
+                        <li>
+                            <a href="#" class="footer__info-sns-item" aria-label="Facebook">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/Icon-facebook.svg" alt="Facebook">
+                                <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__info-sns-item" aria-label="Twitter">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/Icon-x.svg" alt="Twitter">
+                                <span>Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__info-sns-item" aria-label="Instagram">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/Icon-Instagram.svg" alt="Instagram">
+                                <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__info-sns-item" aria-label="Pinterest">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/Icon-pinterest.svg" alt="Pinterest">
+                                <span>Pinterest</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__info-sns-item" aria-label="Youtube">
+                                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/Icon-Youtube.svg" alt="Youtube">
+                                <span>Youtube</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="footer__copyright">
+                <div class="footer__copyright-logo">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/MisellDesktop.svg" alt="MISEル ロゴ">
+                    <p class="footer__copyright-text">Copyright © 2024, Misell Powered by Shopify</p>
+                </div>
+                <div class="footer__copyright-payment" aria-label="対応決済方法">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-Visa.svg" alt="VISA">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-payment-jcb.svg" alt="JCB">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-payment-shopify-pay.svg" alt="ShopifyPay">
+                    <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/6e358e4f406bd598f2fa2ed3951c5f08f2c07a4b/src/icon/icon-payment-google-pay.svg" alt="GooglePay">
+                </div>
+            </section>
+            <button class="arrow" aria-label="ページトップへ戻る">
+                <img src="https://raw.githubusercontent.com/kzmSuzuki/webPropramming1_1Q/e28c2d410332608bd7f651b630d2362396bfe03f/src/icon/icon-arrow.svg" alt="上矢印">
+            </button>
+        </footer>
+    </body>
+</html>

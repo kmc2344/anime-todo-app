@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スクロールで色が変わるボタン</title>
+    <style>
+        body {
+            height: 5000px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <button id="open-tab">新しいタブを開く</button>
+
+    <script>
+        const button = document.getElementById("open-tab");
+
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+
+            if (scrollY >= 1600 && scrollY < 3200) {
+                button.style.backgroundColor = "#28a745";
+            } else if (scrollY >= 3200 && scrollY < 4800) {
+                button.style.backgroundColor = "#ffc107";
+            } else if (scrollY >= 4800) {
+                button.style.backgroundColor = "#dc3545"; 
+            } else {
+                button.style.backgroundColor = "#007BFF";
+            }
+        });
+
+        button.addEventListener("click", () => {
+            window.open("https://supernova.hololivepro.com/"); 
+        });
+    </script>
+</body>
+</html>
