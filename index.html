@@ -3,146 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ラジオボタンフォーム</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .radio-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-        
-        .radio-item label {
-            margin: 0;
-            cursor: pointer;
-            font-weight: normal;
-        }
-        
-        .result {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #e8f4fd;
-            border-radius: 5px;
-            border-left: 4px solid #2196F3;
-        }
-        
-        .result p {
-            margin: 0;
-            color: #333;
-            font-weight: 500;
-        }
-        
-        .no-selection {
-            color: #666;
-            font-style: italic;
-        }
-    </style>
+    <title>アニメTodoアプリ</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="light-mode">
     <div class="container">
-        <h1>ラジオボタンフォーム</h1>
-        
-        <form id="radioForm">
-            <div class="form-group">
-                <label>お好みの色を選択してください：</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="red" name="color" value="赤">
-                        <label for="red">赤</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="blue" name="color" value="青">
-                        <label for="blue">青</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="green" name="color" value="緑">
-                        <label for="green">緑</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="yellow" name="color" value="黄">
-                        <label for="yellow">黄</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="purple" name="color" value="紫">
-                        <label for="purple">紫</label>
-                    </div>
-                </div>
+        <header>
+            <h1>アニメTodoアプリ</h1>
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
+        </header>
+
+        <div class="task-form">
+            <input type="text" id="task-input" placeholder="アニメタイトルを入力">
+            <input type="number" id="episode-input" placeholder="全話数">
+            <input type="number" id="current-episode-input" placeholder="現在の話数">
+            <select id="status-input">
+                <option value="watching">視聴中</option>
+                <option value="completed">完了</option>
+                <option value="plan-to-watch">視聴予定</option>
+            </select>
+            <button id="add-task">追加</button>
+        </div>
+
+        <div class="tasks-container">
+            <h2>アニメ一覧</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">すべて</button>
+                <button class="filter-btn" data-filter="watching">視聴中</button>
+                <button class="filter-btn" data-filter="completed">完了</button>
+                <button class="filter-btn" data-filter="plan-to-watch">視聴予定</button>
             </div>
-        </form>
-        
-        <div class="result">
-            <p id="resultText">選択されているものはないです</p>
+            <ul id="task-list"></ul>
         </div>
     </div>
-
-    <script>
-        // ラジオボタンの要素を取得
-        const radioButtons = document.querySelectorAll('input[name="color"]');
-        const resultText = document.getElementById('resultText');
-        
-        // 各ラジオボタンにイベントリスナーを追加
-        radioButtons.forEach(radio => {
-            radio.addEventListener('change', updateResult);
-        });
-        
-        // 結果を更新する関数
-        function updateResult() {
-            // 選択されたラジオボタンを取得
-            const selectedRadio = document.querySelector('input[name="color"]:checked');
-            
-            if (selectedRadio) {
-                // 選択されている場合
-                resultText.textContent = `選択されているもの：${selectedRadio.value}`;
-                resultText.className = '';
-            } else {
-                // 何も選択されていない場合
-                resultText.textContent = '選択されているものはないです';
-                resultText.className = 'no-selection';
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
