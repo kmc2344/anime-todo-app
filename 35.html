@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフィール登録（XSS対策あり）</title>
+</head>
+<body>
+<h2>プロフィール登録（XSS対策あり）</h2>
+
+<label for="nickname">ニックネーム：</label>
+<input type="text" id="nickname" placeholder="例：さくら">
+
+<label for="bio">自己紹介：</label>
+<textarea id="bio" rows="4" placeholder="例：こんにちは！<b>よろしく</b>お願いします！"></textarea>
+
+<button onclick="showProfile()">表示</button>
+
+<div id="profile">
+  <p id="nameArea"></p>
+  <p id="bioArea"></p>
+</div>
+
+<!-- DOMPurifyライブラリを追加 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+
+<script>
+function showProfile() {
+  var name = document.getElementById("nickname").value;
+  var bio = document.getElementById("bio").value;
+
+  // ニックネーム：HTMLタグを完全に除外
+  var sanitizedName = DOMPurify.sanitize(name, { ALLOWED_TAGS: [] });
+  
+  // 自己紹介：bとiタグのみ許可
+  var sanitizedBio = DOMPurify.sanitize(bio, { ALLOWED_TAGS: ['b', 'i'] });
+
+  document.getElementById("nameArea").innerHTML = sanitizedName;
+  document.getElementById("bioArea").innerHTML = sanitizedBio;
+}
+</script>
+</body>
+</html>

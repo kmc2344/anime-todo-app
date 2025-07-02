@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字数制限テキストエリア</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+        
+        .char-counter {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .char-counter p {
+            margin: 0;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        
+        .danger {
+            background-color: #f8d7da;
+            border-left-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>文字数制限テキストエリア</h1>
+        
+        <div class="form-group">
+            <label for="message">メッセージを入力してください（100文字まで）：</label>
+            <textarea 
+                id="message" 
+                name="message" 
+                maxlength="100" 
+                placeholder="ここにメッセージを入力してください..."
+            ></textarea>
+        </div>
+        
+        <div class="char-counter" id="charCounter">
+            <p>残り文字数: <span id="remainingChars">100</span>文字</p>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('message');
+        const remainingChars = document.getElementById('remainingChars');
+        const charCounter = document.getElementById('charCounter');
+        const maxLength = 100;
+        
+        // 初期表示
+        updateCharCounter();
+        
+        // テキストエリアの入力イベントリスナー
+        textarea.addEventListener('input', updateCharCounter);
+        
+        // 文字数カウンターを更新する関数
+        function updateCharCounter() {
+            const currentLength = textarea.value.length;
+            const remaining = maxLength - currentLength;
+            
+            // 残り文字数を更新
+            remainingChars.textContent = remaining;
+            
+            // 残り文字数に応じてスタイルを変更
+            charCounter.className = 'char-counter';
+            
+            if (remaining <= 10 && remaining > 0) {
+                // 10文字以下になったら警告色
+                charCounter.classList.add('warning');
+            } else if (remaining === 0) {
+                // 文字数制限に達したら危険色
+                charCounter.classList.add('danger');
+            }
+        }
+    </script>
+</body>
+</html>

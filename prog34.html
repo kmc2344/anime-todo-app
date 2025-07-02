@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー情報カード</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 0;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .form-section {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .card-section {
+            padding: 30px;
+            display: none;
+        }
+        
+        .user-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .user-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .user-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .user-age {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .user-hobby {
+            font-size: 16px;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .card-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ユーザー情報カード</h1>
+        
+        <div class="form-section">
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" name="name" required placeholder="山田太郎">
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">年齢</label>
+                    <input type="number" id="age" name="age" required placeholder="25" min="1" max="120">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hobby">趣味</label>
+                    <textarea id="hobby" name="hobby" required placeholder="読書、映画鑑賞、旅行など..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">カードを作成</button>
+            </form>
+        </div>
+        
+        <div class="card-section" id="cardSection">
+            <div class="user-card" id="userCard">
+                <div class="card-content">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-name" id="userName">ユーザー名</div>
+                    <div class="user-age" id="userAge">年齢歳</div>
+                    <div class="card-title">趣味</div>
+                    <div class="user-hobby" id="userHobby">趣味がここに表示されます</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('userForm');
+        const cardSection = document.getElementById('cardSection');
+        const userCard = document.getElementById('userCard');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const userAge = document.getElementById('userAge');
+        const userHobby = document.getElementById('userHobby');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // フォームデータを取得
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const age = formData.get('age');
+            const hobby = formData.get('hobby');
+            
+            // カードに情報を表示
+            userAvatar.textContent = name.charAt(0).toUpperCase();
+            userName.textContent = name;
+            userAge.textContent = age + '歳';
+            userHobby.textContent = hobby;
+            
+            // カードを表示
+            cardSection.classList.add('show', 'fade-in');
+            
+            // フォームをリセット
+            form.reset();
+            
+            // カードまでスクロール
+            cardSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
