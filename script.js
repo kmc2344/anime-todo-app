@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navTabs = document.querySelectorAll('.nav-tab');
     const tabContents = document.querySelectorAll('.tab-content');
     const pageTitle = document.getElementById('page-title');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     let tasks = JSON.parse(localStorage.getItem('animeTasks')) || [];
     let currentFilter = 'all';
@@ -29,6 +32,28 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
         themeToggle.textContent = '☀️';
     }
+
+    // モバイルメニューの開閉
+    mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        sidebarOverlay.classList.toggle('active');
+    });
+
+    // オーバーレイクリックでメニューを閉じる
+    sidebarOverlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+    });
+
+    // タブクリック時にモバイルメニューを閉じる
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+                sidebarOverlay.classList.remove('active');
+            }
+        });
+    });
 
     // タブ切り替え
     navTabs.forEach(tab => {
