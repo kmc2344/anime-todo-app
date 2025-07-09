@@ -5,11 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusInput = document.getElementById('status-input');
     const addTaskButton = document.getElementById('add-task');
     const taskList = document.getElementById('task-list');
+    const todayList = document.getElementById('today-list');
+    const importantList = document.getElementById('important-list');
     const themeToggle = document.getElementById('theme-toggle');
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const navTabs = document.querySelectorAll('.nav-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const pageTitle = document.getElementById('page-title');
 
     let tasks = JSON.parse(localStorage.getItem('animeTasks')) || [];
     let currentFilter = 'all';
+    let currentTab = 'main';
 
     // テーマ切り替え
     themeToggle.addEventListener('click', () => {
@@ -22,6 +28,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         themeToggle.textContent = '☀️';
+    }
+
+    // タブ切り替え
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTab = tab.dataset.tab;
+            switchTab(targetTab);
+        });
+    });
+
+    function switchTab(tabName) {
+        // タブボタンのアクティブ状態を更新
+        navTabs.forEach(tab => tab.classList.remove('active'));
+        document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+        // タブコンテンツの表示を切り替え
+        tabContents.forEach(content => content.classList.remove('active'));
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+
+        // ページタイトルを更新
+        const titles = {
+            'main': 'アニメTodoアプリ',
+            'today': '今日の予定',
+            'important': '重要なアニメ'
+        };
+        pageTitle.textContent = titles[tabName];
+
+        currentTab = tabName;
+        renderCurrentTab();
     }
 
     // タスクの追加
@@ -38,12 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalEpisodes,
                 currentEpisode,
                 status,
-                completed: status === 'completed'
+                completed: status === 'completed',
+                important: false,
+                today: false,
+                createdAt: new Date().toISOString()
             };
 
             tasks.push(task);
             saveTasks();
-            renderTasks();
+            renderCurrentTab();
             clearInputs();
         }
     });
@@ -54,7 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const taskId = parseInt(e.target.dataset.id);
             tasks = tasks.filter(task => task.id !== taskId);
             saveTasks();
-            renderTasks();
+            renderCurrentTab();
+        }
+    });
+
+    // 重要ボタンの処理
+    taskList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('important-btn')) {
+            const taskId = parseInt(e.target.dataset.id);
+            const task = tasks.find(task => task.id === taskId);
+            if (task) {
+                task.important = !task.important;
+                saveTasks();
+                renderCurrentTab();
+            }
+        }
+    });
+
+    // 今日中トグルスイッチの処理
+    taskList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('toggle-switch')) {
+            const taskId = parseInt(e.target.dataset.id);
+            const task = tasks.find(task => task.id === taskId);
+            if (task) {
+                task.today = !task.today;
+                saveTasks();
+                renderCurrentTab();
+            }
         }
     });
 
@@ -67,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 task.status = e.target.value;
                 task.completed = e.target.value === 'completed';
                 saveTasks();
-                renderTasks();
+                renderCurrentTab();
             }
         }
     });
@@ -78,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             currentFilter = button.dataset.filter;
-            renderTasks();
+            renderCurrentTab();
         });
     });
 
@@ -95,8 +159,23 @@ document.addEventListener('DOMContentLoaded', () => {
         statusInput.value = 'watching';
     }
 
-    // タスクの表示
-    function renderTasks() {
+    // 現在のタブに応じてタスクを表示
+    function renderCurrentTab() {
+        switch (currentTab) {
+            case 'main':
+                renderMainTasks();
+                break;
+            case 'today':
+                renderTodayTasks();
+                break;
+            case 'important':
+                renderImportantTasks();
+                break;
+        }
+    }
+
+    // メインタブのタスク表示
+    function renderMainTasks() {
         taskList.innerHTML = '';
         const filteredTasks = currentFilter === 'all' 
             ? tasks 
@@ -114,12 +193,84 @@ document.addEventListener('DOMContentLoaded', () => {
                     <option value="completed" ${task.status === 'completed' ? 'selected' : ''}>完了</option>
                     <option value="plan-to-watch" ${task.status === 'plan-to-watch' ? 'selected' : ''}>視聴予定</option>
                 </select>
+                <button class="important-btn ${task.important ? 'important' : ''}" data-id="${task.id}">
+                    ${task.important ? '⭐️' : '☆'}
+                </button>
+                <div class="toggle-container">
+                    <div class="toggle-switch ${task.today ? 'active' : ''}" data-id="${task.id}"></div>
+                    <span class="toggle-label">今日中</span>
+                </div>
                 <button class="delete-btn" data-id="${task.id}">削除</button>
             `;
             taskList.appendChild(li);
         });
     }
 
+    // 今日の予定タブのタスク表示
+    function renderTodayTasks() {
+        todayList.innerHTML = '';
+        const todayTasks = tasks.filter(task => task.today);
+
+        if (todayTasks.length === 0) {
+            todayList.innerHTML = '<li class="no-tasks">今日の予定に追加されたアニメはありません</li>';
+            return;
+        }
+
+        todayTasks.forEach(task => {
+            const li = document.createElement('li');
+            li.className = `task-item ${task.completed ? 'completed' : ''}`;
+            li.innerHTML = `
+                <span>${task.title}</span>
+                <span>全${task.totalEpisodes}話</span>
+                <span>現在${task.currentEpisode}話</span>
+                <select class="status-select" data-id="${task.id}">
+                    <option value="watching" ${task.status === 'watching' ? 'selected' : ''}>視聴中</option>
+                    <option value="completed" ${task.status === 'completed' ? 'selected' : ''}>完了</option>
+                    <option value="plan-to-watch" ${task.status === 'plan-to-watch' ? 'selected' : ''}>視聴予定</option>
+                </select>
+                <button class="important-btn ${task.important ? 'important' : ''}" data-id="${task.id}">
+                    ${task.important ? '⭐️' : '☆'}
+                </button>
+                <button class="today-btn today" data-id="${task.id}">📅</button>
+                <button class="delete-btn" data-id="${task.id}">削除</button>
+            `;
+            todayList.appendChild(li);
+        });
+    }
+
+    // 重要タブのタスク表示
+    function renderImportantTasks() {
+        importantList.innerHTML = '';
+        const importantTasks = tasks.filter(task => task.important);
+
+        if (importantTasks.length === 0) {
+            importantList.innerHTML = '<li class="no-tasks">重要なアニメはありません</li>';
+            return;
+        }
+
+        importantTasks.forEach(task => {
+            const li = document.createElement('li');
+            li.className = `task-item ${task.completed ? 'completed' : ''}`;
+            li.innerHTML = `
+                <span>${task.title}</span>
+                <span>全${task.totalEpisodes}話</span>
+                <span>現在${task.currentEpisode}話</span>
+                <select class="status-select" data-id="${task.id}">
+                    <option value="watching" ${task.status === 'watching' ? 'selected' : ''}>視聴中</option>
+                    <option value="completed" ${task.status === 'completed' ? 'selected' : ''}>完了</option>
+                    <option value="plan-to-watch" ${task.status === 'plan-to-watch' ? 'selected' : ''}>視聴予定</option>
+                </select>
+                <button class="important-btn important" data-id="${task.id}">⭐️</button>
+                <div class="toggle-container">
+                    <div class="toggle-switch ${task.today ? 'active' : ''}" data-id="${task.id}"></div>
+                    <span class="toggle-label">今日中</span>
+                </div>
+                <button class="delete-btn" data-id="${task.id}">削除</button>
+            `;
+            importantList.appendChild(li);
+        });
+    }
+
     // 初期表示
-    renderTasks();
+    renderCurrentTab();
 }); 
