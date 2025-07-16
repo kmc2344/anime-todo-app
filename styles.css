@@ -350,6 +350,10 @@ button:hover {
     .sidebar-overlay.active {
         display: block;
     }
+
+    h1#page-title {
+        font-size: 1.3rem;
+    }
 }
 
 @media (min-width: 769px) {
