@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アニメTodoアプリ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>メニュー</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-tab active" data-tab="main">📺 アニメ一覧</button>
+                <button class="nav-tab" data-tab="today">📅 今日の予定</button>
+                <button class="nav-tab" data-tab="important">⭐️ 重要</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <header>
+                    <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
+                    <h1 id="page-title">アニメTodoアプリ</h1>
+                    <div class="toggle-container">
+                        <div id="theme-toggle" class="toggle-switch" tabindex="0"></div>
+                        <span class="toggle-label" id="theme-toggle-label">🌙</span>
+                    </div>
+                </header>
+
+                <!-- メインタブ -->
+                <div class="tab-content active" id="main-tab">
+                    <div class="task-form">
+                        <input type="text" id="task-input" placeholder="アニメタイトルを入力">
+                        <input type="number" id="episode-input" placeholder="全話数">
+                        <input type="number" id="current-episode-input" placeholder="現在の話数">
+                        <select id="status-input">
+                            <option value="watching">視聴中</option>
+                            <option value="completed">完了</option>
+                            <option value="plan-to-watch">視聴予定</option>
+                        </select>
+                        <button id="add-task">追加</button>
+                    </div>
+
+                    <div class="tasks-container">
+                        <h2>アニメ一覧</h2>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">すべて</button>
+                            <button class="filter-btn" data-filter="watching">視聴中</button>
+                            <button class="filter-btn" data-filter="completed">完了</button>
+                            <button class="filter-btn" data-filter="plan-to-watch">視聴予定</button>
+                        </div>
+                        <ul id="task-list"></ul>
+                    </div>
+                </div>
+
+                <!-- 今日の予定タブ -->
+                <div class="tab-content" id="today-tab">
+                    <div class="tasks-container">
+                        <h2>今日の予定</h2>
+                        <ul id="today-list"></ul>
+                    </div>
+                </div>
+
+                <!-- 重要タブ -->
+                <div class="tab-content" id="important-tab">
+                    <div class="tasks-container">
+                        <h2>重要なアニメ</h2>
+                        <ul id="important-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
