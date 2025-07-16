@@ -352,7 +352,12 @@ button:hover {
     }
 
     h1#page-title {
-        font-size: 0.7rem;
+        font-size: 10pt;
+    }
+    .toggle-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
     }
 }
 
